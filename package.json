@@ -1,12 +1,13 @@
 {
-  "name": "netflix-clone-",
+  "name": "netflix-clone",
   "version": "1.0.0",
-  "description": "This would be a comprehensive build of a netflix-clone app.",
+  "description": "A Netflix-like app using TMDb API",
   "main": "app.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "start": "node app.js"
   },
-  "keywords": [],
-  "author": "",
-  "license": "ISC"
+  "dependencies": {
+    "dotenv": "^10.0.0",
+    "node-fetch": "^2.6.1"
+  }
 }
