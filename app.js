@@ -1,19 +1,31 @@
+const express = require('express');
 const fetch = require('node-fetch');
-require('dotenv').config();  // To load the API key from the .env file
+require('dotenv').config();  // Load environment variables
 
-// Fetch popular movies from the TMDb API
-const API_KEY = process.env.API_KEY;  // Read API key from environment variables
+const app = express();
+const port = 8080;  // The port that the app will listen on
+
+// TMDb API URL
+const API_KEY = process.env.API_KEY;
 const URL = `https://api.themoviedb.org/3/movie/popular?api_key=${API_KEY}&language=en-US&page=1`;
 
-async function fetchMovies() {
+// Serve a simple webpage displaying movie data
+app.get('/', async (req, res) => {
     try {
         const response = await fetch(URL);
         const data = await response.json();
-        console.log("Popular Movies:", data.results);  // Log the popular movies
+        // Render movie data as simple HTML
+        res.send(`
+            <h1>Popular Movies</h1>
+            <ul>
+                ${data.results.map(movie => `<li>${movie.title}</li>`).join('')}
+            </ul>
+        `);
     } catch (error) {
-        console.error('Error fetching movies:', error);
+        res.status(500).send('Error fetching movies');
     }
-}
+});
 
-// Run the function to fetch and display the movies
-fetchMovies();
+app.listen(port, () => {
+    console.log(`App listening at http://localhost:${port}`);
+});
