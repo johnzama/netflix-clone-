@@ -1,14 +1,17 @@
 {
   "name": "netflix-clone",
   "version": "1.0.0",
-  "description": "A Netflix-like app using TMDb API",
-  "main": "app.js",
   "scripts": {
-    "start": "node app.js"
+    "start": "node app.js",  // For backend
+    "build": "react-scripts build"  // For frontend React build
   },
   "dependencies": {
-    "dotenv": "^10.0.0",
-    "express": "^4.21.1",
-    "node-fetch": "^2.6.1"
+    "express": "^4.17.1",
+    "dotenv": "^8.2.0",
+    "node-fetch": "^2.6.1",
+    "react": "^17.0.1",
+    "react-dom": "^17.0.1",
+    "react-scripts": "4.0.1"
   }
 }
+
